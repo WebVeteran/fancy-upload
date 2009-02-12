@@ -1,0 +1,89 @@
+1. Copy the 'fancy_upload' folder to a directory in your site. I recommend /includes/js/ and will use that going forward.
+2. Using the included demo.html as a guide, place the code inside of your form.
+
+EXAMPLE:
+<form action="upload.cfm" method="post" enctype="multipart/form-data">
+
+	<!-- Fancy Upload -->
+		<script type="text/javascript" src="/includes/js/fancy_upload/fancyupload.js"></script>
+		<style type="text/css">
+			.filefield {
+			background:transparent;
+			-moz-opacity:0.0 ;
+			filter:alpha(opacity: 000);
+			opacity: 0.0;
+		}
+		</style>
+		
+		<div style="width:100px; height:20px;">
+			<div style="white-space:nowrap; position:absolute;">
+				<input type="text" size="1" style="visibility:hidden;" id="mover" name="mover"><input type="button" value="Pick File" style="width:width:60px;">
+				<!-- if you want the label on the right instead of bottom <span id="fileToUploadattach"><img src="/includes/js/fancy_upload/icons/null.gif" height="16" width="16">No file selected</span> -->
+			</div>
+				
+			<div style="position: absolute;" id="fileToUploadholder" class="filefield">
+				<cfinput type="file" size="1" name="fileToUpload" id="fileToUpload"  onchange="showfile(this.name, this.value, 'fileToUploadattach', 'jpg');"style="width:width:60px;">
+			</div>
+		</div>
+		<!-- label on bottom --><span id="fileToUploadattach"><img src="/includes/js/fancy_upload/icons/null.gif" height="16" width="16">No file selected</span>
+				
+		<!--- WHEN A PAGE IS RELOADED --->
+		<script type="text/javascript">
+		showfile('fileToUpload', $('fileToUpload').value, 'fileToUploadattach', 'jpg');
+		</script>	<!-- // Fancy Upload -->
+
+<input type="sumbit">
+</form>
+
+
+ADVANCED USAGE
+
+It is possible to use a server language to display multiple Fancy Uploads in a single form. Included is a version for ColdFusion.
+* The first instance loads the base (script and style). The others have that setting to 0.
+* I am using CFinclude instead of a CFC here so that CFinput will work (with fields being required, etc).
+* Note that in this example on the first image is required (FUrequired=1).
+
+<cfform name="photoSet7" action="photos.cfm" method="post" enctype="multipart/form-data">
+<table>
+	<tbody>
+	<tr class="rowheader">
+		<td colspan="5">New Image Set</td>
+	</tr>
+	<tr class="rowrow1">
+		<td>Icon (35px &times; 35px)</td>
+		<td>Main Image (340px &times; 390px)</td>
+		<td>Large (480px &times; 640px)</td>
+		<td>Zoomed (1020px &times; 1170px)</td>
+		<td>&nbsp;</td>
+	</tr>
+	<Tr class="rowrow3">
+		<td>Add:<br>
+			<cfset variables.FUinputName="icon7">
+			<cfset variables.FUmessage="Choose an Icon">
+			<cfset variables.FUrequired="1">
+			<cfset variables.FUloadbase="1">
+			<cfinclude template="../../../includes/js/fancy_upload/fancyupload.cfm">
+		</td>
+		<td>Add:<br>
+			<cfset variables.FUinputName="main7">
+			<cfset variables.FUmessage="Choose a Main Image">
+			<cfset variables.FUloadbase="0">
+			<cfinclude template="../../../includes/js/fancy_upload/fancyupload.cfm">
+		</td>
+		<td>Add:<br>
+			<cfset variables.FUinputName="large7">
+			<cfset variables.FUmessage="Choose a Large Image">
+			<cfset variables.FUloadbase="0">
+			<cfinclude template="../../../includes/js/fancy_upload/fancyupload.cfm">
+		</td>
+		<td>Add:<br>
+			<cfset variables.FUinputName="zoomed7">
+			<cfset variables.FUmessage="Choose a Zoomed Image">
+			<cfset variables.FUloadbase="0">
+			<cfinclude template="../../../includes/js/fancy_upload/fancyupload.cfm">
+		</td>
+		<td align="center"><input type="submit" value="Add"></td>
+	</tr>
+	</tbody>
+</table>
+</cfform>

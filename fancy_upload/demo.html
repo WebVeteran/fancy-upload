@@ -1,0 +1,32 @@
+<form action="upload.cfm" method="post" enctype="multipart/form-data">
+
+	<!-- Fancy Upload -->
+		<script type="text/javascript" src="/includes/js/fancy_upload/fancyupload.js"></script>
+		<style type="text/css">
+			.filefield {
+			background:transparent;
+			-moz-opacity:0.0 ;
+			filter:alpha(opacity: 000);
+			opacity: 0.0;
+		}
+		</style>
+		
+		<div style="width:100px; height:20px;">
+			<div style="white-space:nowrap; position:absolute;">
+				<input type="text" size="1" style="visibility:hidden;" id="mover" name="mover"><input type="button" value="Pick File" style="width:width:60px;">
+				<!-- if you want the label on the right instead of bottom <span id="fileToUploadattach"><img src="/includes/js/fancy_upload/icons/null.gif" height="16" width="16">No file selected</span> -->
+			</div>
+				
+			<div style="position: absolute;" id="fileToUploadholder" class="filefield">
+				<cfinput type="file" size="1" name="fileToUpload" id="fileToUpload"  onchange="showfile(this.name, this.value, 'fileToUploadattach', 'jpg');"style="width:width:60px;">
+			</div>
+		</div>
+		<!-- label on bottom --><span id="fileToUploadattach"><img src="/includes/js/fancy_upload/icons/null.gif" height="16" width="16">No file selected</span>
+				
+		<!--- WHEN A PAGE IS RELOADED --->
+		<script type="text/javascript">
+		showfile('fileToUpload', $('fileToUpload').value, 'fileToUploadattach', 'jpg');
+		</script>	<!-- // Fancy Upload -->
+
+<input type="sumbit">
+</form>
