@@ -1,5 +1,5 @@
 Fancy Upload is a form widget that makes it appear as if
-we've styled the "browse..." button and file name field 
+we've styled the 'browse...' button and file name field 
 with only CSS. Since I did not specify any widths in pixels,
 we will have a nice cross browser solution. Then by adding
 some javascript we have total control of the file name,
