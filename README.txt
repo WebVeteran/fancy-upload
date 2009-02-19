@@ -7,7 +7,7 @@ and even add an icon. And it degrades nicely if javascript
 is not available.
 
 Copyright (c) 2009 Gravinese Enterprises Inc
-Jules Gravinese :: http://www.webveteran.com/
+Jules Gravinese ::: http://www.webveteran.com/
 
 Fancy Upload by Gravinese Enterprises Inc is licensed
 under a Creative Commons Attribution-Share Alike 3.0 United
