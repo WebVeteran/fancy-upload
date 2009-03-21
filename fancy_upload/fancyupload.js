@@ -1,4 +1,7 @@
 function showfile(thisfile, path, ffile, doctype) {
+	if (path=='') {
+		return false;
+	}
 	var myDocPath = path;
 	var aPathComps = myDocPath.split("/");
 	if (aPathComps.length == 1) {
