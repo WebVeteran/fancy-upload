@@ -96,7 +96,6 @@ function showfile(thisfile, path, ffile, doctype) {
 		}
 	}
 	
-	
 	if (doctype && doctype != '' && doctype != myext) {
 		alert("Only " + doctype + " files are accepted.");
 		resetfield(thisfile, path, ffile, doctype);
@@ -104,12 +103,10 @@ function showfile(thisfile, path, ffile, doctype) {
 	}
 	
 	document.getElementById(ffile).innerHTML = "<img src='/includes/js/fancy_upload/icons/"+myfileext+"' height='16' width='16'> "+myFilename+"";
-
 }
 
 function resetfield(thisfile, path, ffile, doctype) {
-		document.getElementById(thisfile+'holder').innerHTML = document.getElementById(thisfile+'holder').innerHTML;
-		
-		document.getElementById(ffile).innerHTML = "<img src='/includes/js/fancy_upload/icons/null.gif' height='16' width='16'>No file selected";
-		//alert(document.getElementById(thisfile+'holder').innerHTML);
+		document.getElementById(thisfile).value = '';
+		document.getElementById(thisfile+'holder').innerHTML = document.getElementById(thisfile+'holder').innerHTML;		
+		document.getElementById(ffile).innerHTML = "<img src='/includes/js/fancy_upload/icons/null.gif' height='16' width='16'>No file selected";		
 }
