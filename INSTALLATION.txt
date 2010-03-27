@@ -12,12 +12,17 @@ EXAMPLE:
 			-moz-opacity:0.0 ;
 			filter:alpha(opacity: 000);
 			opacity: 0.0;
+		}		
+		.pickfile {
+			width:width:60px !important;
+			BACKGROUND: #5F893D !important;
+			color: white !important;
 		}
 		</style>
 		
 		<div style="width:100px; height:20px;">
 			<div style="white-space:nowrap; position:absolute;">
-				<input type="text" size="1" style="visibility:hidden;" id="mover" name="mover"><input type="button" value="Pick File" style="width:width:60px;">
+				<input type="text" size="1" style="visibility:hidden;" id="mover" name="mover"><input type="button" value="Pick File" class="pickfile">
 				<!-- if you want the label on the right instead of bottom <span id="fileToUploadattach"><img src="/includes/js/fancy_upload/icons/null.gif" height="16" width="16">No file selected</span> -->
 			</div>
 				
@@ -30,7 +35,8 @@ EXAMPLE:
 		<!--- WHEN A PAGE IS RELOADED --->
 		<script type="text/javascript">
 		showfile('fileToUpload', $('fileToUpload').value, 'fileToUploadattach', 'jpg');
-		</script>	<!-- // Fancy Upload -->
+		</script>
+	<!-- // Fancy Upload -->
 
 <input type="sumbit">
 </form>
@@ -39,7 +45,7 @@ EXAMPLE:
 ADVANCED USAGE
 
 It is possible to use a server language to display multiple Fancy Uploads in a single form. Included is a version for ColdFusion.
-* The first instance loads the base (script and style). The others have that setting to 0.
+* The loading of the base JS and CSS is now automatic
 * I am using CFinclude instead of a CFC here so that CFinput will work (with fields being required, etc).
 * Note that in this example on the first image is required (FUrequired=1).
 
@@ -58,28 +64,24 @@ It is possible to use a server language to display multiple Fancy Uploads in a s
 	</tr>
 	<Tr class="rowrow3">
 		<td>Add:<br>
-			<cfset variables.FUinputName="icon7">
-			<cfset variables.FUmessage="Choose an Icon">
-			<cfset variables.FUrequired="1">
-			<cfset variables.FUloadbase="1">
+			<cfset request.FUinputName="icon7">
+			<cfset request.FUmessage="Choose an Icon">
+			<cfset request.FUrequired="1">
 			<cfinclude template="../../../includes/js/fancy_upload/fancyupload.cfm">
 		</td>
 		<td>Add:<br>
-			<cfset variables.FUinputName="main7">
-			<cfset variables.FUmessage="Choose a Main Image">
-			<cfset variables.FUloadbase="0">
+			<cfset request.FUinputName="main7">
+			<cfset request.FUmessage="Choose a Main Image">
 			<cfinclude template="../../../includes/js/fancy_upload/fancyupload.cfm">
 		</td>
 		<td>Add:<br>
-			<cfset variables.FUinputName="large7">
-			<cfset variables.FUmessage="Choose a Large Image">
-			<cfset variables.FUloadbase="0">
+			<cfset request.FUinputName="large7">
+			<cfset request.FUmessage="Choose a Large Image">
 			<cfinclude template="../../../includes/js/fancy_upload/fancyupload.cfm">
 		</td>
 		<td>Add:<br>
-			<cfset variables.FUinputName="zoomed7">
-			<cfset variables.FUmessage="Choose a Zoomed Image">
-			<cfset variables.FUloadbase="0">
+			<cfset request.FUinputName="zoomed7">
+			<cfset request.FUmessage="Choose a Zoomed Image">
 			<cfinclude template="../../../includes/js/fancy_upload/fancyupload.cfm">
 		</td>
 		<td align="center"><input type="submit" value="Add"></td>
